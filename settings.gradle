@@ -1,0 +1,1 @@
+include ':simplenewsdemo', ':sharesdk_lib','im_lib'

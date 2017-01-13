@@ -1,0 +1,43 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="4dp">
+    <TextView
+        android:id="@+id/date"
+        style="@style/weacher_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        />
+    <ImageView
+        android:id="@+id/weatherImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/biz_plugin_weather_qing" />
+    <TextView
+        android:id="@+id/weatherTemp"
+        style="@style/weacher_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        />
+
+    <TextView
+        android:id="@+id/wind"
+        style="@style/weacher_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        />
+
+    <TextView
+        android:id="@+id/weather"
+        style="@style/weacher_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+         />
+</LinearLayout>

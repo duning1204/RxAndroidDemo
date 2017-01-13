@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/login_logo"
+	tools:context="com.zdu.simplenewsdemo.ui.LoginActivity">
+
+	<include
+		android:id="@+id/header"
+		layout="@layout/header_toolbar" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="40sp"
+		android:gravity="center_vertical"
+		android:orientation="vertical"
+		android:padding="20sp">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:alpha="0.6"
+			android:text="@string/login_fast_login"
+			android:textColor="@android:color/white"
+			android:textSize="18sp" />
+
+		<ImageButton
+			android:id="@+id/login_fast_qq"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:background="@android:color/transparent"
+			android:padding="10sp"
+			android:src="@drawable/ssdk_oks_classic_qq" />
+	</LinearLayout>
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:id="@+id/login_logo"
+		android:layout_width="100sp"
+		android:layout_height="100sp"
+		android:layout_below="@id/header"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="30sp"
+		android:src="@drawable/logo"
+		app:border_color="@color/primary_light"
+		app:border_width="3sp" />
+
+	<LinearLayout
+		android:id="@+id/login_userid_ll"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/login_logo"
+		android:layout_marginTop="20sp"
+		android:gravity="center_horizontal"
+		android:orientation="horizontal"
+		android:padding="20sp">
+
+
+		<TextView
+			android:id="@+id/login_userid"
+			style="@style/Common_TextView_Style"
+			android:layout_width="200sp"
+			android:layout_height="wrap_content"
+			android:drawableLeft="@drawable/login_user"
+			android:gravity="center"
+			android:padding="10sp"
+			android:text="@string/login_def" />
+	</LinearLayout>
+
+
+	<Button
+		android:id="@+id/login_btn"
+		android:layout_width="150sp"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/login_userid_ll"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="40sp"
+		android:background="@drawable/login_btn_bg"
+		android:gravity="center"
+		android:text="@string/login_btn"
+		android:textSize="16sp" />
+</RelativeLayout>

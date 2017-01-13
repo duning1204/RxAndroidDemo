@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">SimpleNewsDemo</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="news">新闻</string>
+    <string name="pic">图片</string>
+    <string name="weather">天气</string>
+    <string name="im">聊天</string>
+    <string name="about">关于</string>
+    <string name="image">image</string>
+    <string name="error_date">数据请求失败</string>
+    <string name="weather_hint">请输入城市名称</string>
+    <string name="weather_error">请输入正确的城市名称(如：北京)</string>
+    <string name="exit">再次点击返回键退出程序</string>
+    <string name="click_head_pic">点击了头像</string>
+    <string name="topLine">头条</string>
+    <string name="nba">NBA</string>
+    <string name="car">汽车</string>
+    <string name="joke">笑话</string>
+    <string name="pic_hint">只有20条数据哦</string>
+    <string name="refresh">刷新</string>
+    <string name="search">查询</string>
+    <string name="loading">正在加载...</string>
+    <string name="share">分享</string>
+    <string name="loginned">您已经登录了</string>
+    <string name="login_error">登录失败</string>
+    <string name="login_cancel">登录取消</string>
+    <string name="userinfo_error">获取用户信息失败</string>
+    <string name="userinfo_cancel">取消获取用户信息</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_select_userid">请选择账号：</string>
+    <string name="login_def">test1</string>
+    <string name="login_fast_login">---------------第三方快速登录---------------</string>
+    <string name="login_btn">登录</string>
+    <string name="connect_fail">未连接聊天服务器</string>
+</resources>
