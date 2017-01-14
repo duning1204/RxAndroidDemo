@@ -61,20 +61,6 @@ public class WeatherFragment extends BaseFragment {
     ProgressBar mProgress;
     @Bind(R.id.weather_et)
     EditText mWeatherEt;
-    /**
-     * 标志位，标志已经初始化完成
-     * onCreateView()方法内设置为true
-     */
-    private boolean isPrepared;
-    /**
-     * 是否已被加载过一次，第二次就不再去请求数据了
-     * 网络请求完成设置数据成功后设置为true
-     */
-    private boolean mHasLoadedOnce;
-    /**
-     * 是否联网成功
-     */
-    private boolean mHasNet;
 
     private Subscription subscribe;
 
