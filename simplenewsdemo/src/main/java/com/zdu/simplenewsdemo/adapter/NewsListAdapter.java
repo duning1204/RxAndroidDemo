@@ -68,7 +68,7 @@ public class NewsListAdapter extends RecyclerView.Adapter {
             if (newsEntity == null) {
                 return;
             }
-            Glide.with(itemViewHolder.mImageView.getContext()).load(newsEntity.getImgsrc()).into(itemViewHolder.mImageView);
+            Glide.with(itemViewHolder.mImageView.getContext()).load(newsEntity.getImgsrc()).crossFade().into(itemViewHolder.mImageView);
             itemViewHolder.mTitle.setText(newsEntity.getTitle());
             itemViewHolder.mContent.setText(newsEntity.getDigest());
         }

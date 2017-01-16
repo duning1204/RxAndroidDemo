@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -42,7 +44,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
     @Bind(R.id.collapsingToolbarLayout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Bind(R.id.html_tv)
-    HtmlTextView mHtmlTv;
+    WebView mHtmlTv;
 
     private Subscription subscribe;
 
@@ -66,10 +68,17 @@ public class NewsDetailsActivity extends AppCompatActivity {
         mHeaderToolbar.inflateMenu(R.menu.news_details_menu);
         newsEntity = getIntent().getParcelableExtra("newsEntity");
         mCollapsingToolbarLayout.setTitle(newsEntity.getTitle());
-        Glide.with(this).load(newsEntity.getImgsrc()).into(mHeaderIv);
+        Glide.with(this).load(newsEntity.getImgsrc()).crossFade().into(mHeaderIv);
+        initWebView();
         subscribe = getSubscribe();
 
         initShareSDK();
+    }
+
+    private void initWebView() {
+        WebSettings settings = mHtmlTv.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDefaultTextEncodingName("UTF-8");
     }
 
 
@@ -139,7 +148,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String s) {
-                        mHtmlTv.setHtml(s, new HtmlHttpImageGetter(mHtmlTv));
+                        mHtmlTv.loadDataWithBaseURL(null, s, "text/html", "UTF-8", null);
                     }
                 });
     }

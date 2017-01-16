@@ -163,9 +163,9 @@ public class NewsListFragment extends BaseFragment {
             Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
             intent.putExtra("newsEntity", newsEntity);
             //TODO 以共享元素为基准开启新的Activity(会崩溃)
-//            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view.findViewById(R.id.ivNews), getString(R.string.image));
-//            ActivityCompat.startActivity(getActivity(), intent, optionsCompat.toBundle());
-            startActivity(intent);
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view.findViewById(R.id.ivNews), getString(R.string.image));
+            ActivityCompat.startActivity(getActivity(), intent, optionsCompat.toBundle());
+//            startActivity(intent);
         }
     };
 
