@@ -2,11 +2,8 @@ package com.zdu.simplenewsdemo.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,8 +19,6 @@ import com.zdu.simplenewsdemo.bean.NewsDetailsBean;
 import com.zdu.simplenewsdemo.network.Network;
 
 import org.json.JSONObject;
-import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
-import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
