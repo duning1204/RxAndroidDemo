@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zdu.simplenewsdemo.MainActivity;
 import com.zdu.simplenewsdemo.R;
 import com.zdu.simplenewsdemo.adapter.NewsListAdapter;
 import com.zdu.simplenewsdemo.bean.NewsBean;
@@ -51,6 +52,8 @@ public class NewsListFragment extends BaseFragment {
     private boolean mRefreshMore;
     private ArrayList<NewsBean.NewsEntity> list = new ArrayList<>();
 
+    private MainActivity activity;
+
     public NewsListFragment() {
     }
 
@@ -65,6 +68,7 @@ public class NewsListFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this, view);
+        activity = (MainActivity) getActivity();
         isPrepared = true;
         return view;
     }
@@ -73,9 +77,11 @@ public class NewsListFragment extends BaseFragment {
     protected void lazyLoad() {
         //判断是否 初始化完成，是否处于显示状态，是否已经加载完成过数据
         if (isPrepared && isVisible && mHasLoadedOnce && mHasNet) {
+            activity.showFAB(mRecycleview);
             return;
         }
         if (isPrepared) {
+            activity.showFAB(mRecycleview);
             loadNews(index);
         }
     }

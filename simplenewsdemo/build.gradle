@@ -37,6 +37,7 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'de.hdodenhof:circleimageview:1.3.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
     compile project(':sharesdk_lib')
     compile files('libs/mta-sdk-1.6.2.jar')
     compile files('libs/open_sdk_r5756.jar')

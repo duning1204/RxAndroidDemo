@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.zdu.simplenewsdemo.MainActivity;
 import com.zdu.simplenewsdemo.R;
 import com.zdu.simplenewsdemo.utils.CommonUtils;
 
@@ -26,12 +27,16 @@ public class IMListFragment extends BaseFragment {
     @Bind(R.id.conversationlist)
     FrameLayout mConversationlist;
 
+    private MainActivity activity;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_im, container, false);
         isPrepared = true;
         ButterKnife.bind(this, view);
+        activity = (MainActivity) getActivity();
+
         return view;
     }
 
@@ -39,9 +44,11 @@ public class IMListFragment extends BaseFragment {
     protected void lazyLoad() {
         //判断是否 初始化完成，是否处于显示状态，是否已经加载完成过数据
         if (isPrepared && isVisible && mHasLoadedOnce && mHasNet) {
+            activity.hideFAB();
             return;
         }
         if (isPrepared) {
+            activity.hideFAB();
             //成功连接im服务器
             if (CommonUtils.IM_SUCCESS) {
                 mHasNet = true;

@@ -51,8 +51,7 @@ public class NewsListAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ITEM) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false);
-            ItemViewHolder holder = new ItemViewHolder(view);
-            return holder;
+            return new ItemViewHolder(view);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, null);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -86,12 +85,12 @@ public class NewsListAdapter extends RecyclerView.Adapter {
     /**
      * 列表项
      */
-    class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView mImageView;
         TextView mTitle;
         TextView mContent;
 
-        public ItemViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.ivNews);
             mTitle = (TextView) itemView.findViewById(R.id.tvTitle);
@@ -112,7 +111,7 @@ public class NewsListAdapter extends RecyclerView.Adapter {
      */
     private class FooterViewHolder extends RecyclerView.ViewHolder {
 
-        public FooterViewHolder(View itemView) {
+        FooterViewHolder(View itemView) {
             super(itemView);
         }
     }
@@ -121,7 +120,7 @@ public class NewsListAdapter extends RecyclerView.Adapter {
         mItemClickListener = itemClickListener;
     }
 
-    public ItemClickListener mItemClickListener;
+    private ItemClickListener mItemClickListener;
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);

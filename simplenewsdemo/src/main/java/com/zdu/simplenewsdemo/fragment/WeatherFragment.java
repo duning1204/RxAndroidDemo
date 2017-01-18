@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zdu.simplenewsdemo.MainActivity;
 import com.zdu.simplenewsdemo.R;
 import com.zdu.simplenewsdemo.adapter.WeatherAdapter;
 import com.zdu.simplenewsdemo.bean.WeatherBean;
@@ -63,12 +64,14 @@ public class WeatherFragment extends BaseFragment {
     EditText mWeatherEt;
 
     private Subscription subscribe;
+    private MainActivity activity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_whether, container, false);
         ButterKnife.bind(this, view);
+        activity = (MainActivity) getActivity();
         isPrepared = true;
         return view;
     }
@@ -77,9 +80,11 @@ public class WeatherFragment extends BaseFragment {
     protected void lazyLoad() {
         //判断是否 初始化完成，是否处于显示状态，是否已经加载完成过数据
         if (isPrepared && isVisible && mHasLoadedOnce && mHasNet) {
+            activity.hideFAB();
             return;
         }
         if (isPrepared) {
+            activity.hideFAB();
             mEt = SpUtils.getInstance(getActivity()).get("weather_city", null);
             if ("".equals(mEt) || mEt == null) {
                 mEt = "北京";

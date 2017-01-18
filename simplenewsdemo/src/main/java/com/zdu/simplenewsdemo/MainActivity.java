@@ -10,11 +10,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.melnykov.fab.FloatingActionButton;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.Tencent;
 import com.zdu.simplenewsdemo.fragment.AboutFragment;
@@ -33,7 +36,6 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import io.rong.imkit.RongIM;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,14 +47,15 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerlayout;
     @Bind(R.id.navagation_view)
     NavigationView mNavigationView;
+    @Bind(R.id.fab)
+    FloatingActionButton mFab;
     private ArrayList<BaseFragment> mList;
-
-    private MyAdapter adapter;
 
     private QQLoginListener mQQLoginListener;
     private String appId = CommonUtils.QQ_APPID;
     private Tencent mTencent;
     private String token;//im聊天
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(mNavigationItem);
         mTencent = Tencent.createInstance(appId, getApplicationContext());
         token = SpUtils.getInstance(this).get("token", null);
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayoutManager manager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+                manager.scrollToPosition(0);
+            }
+        });
+
     }
 
     /**
@@ -112,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             Tencent.handleResultData(data, mQQLoginListener);
             Snackbar.make(mNavigationView, mNavigationView.getContext().getString(R.string.login_success), Snackbar.LENGTH_SHORT).show();
         }
-        if (requestCode == CommonUtils.FINISH_ACTIVITY_LOGIN && requestCode == CommonUtils.FINISH_ACTIVITY_LOGIN) {
+        if (requestCode == CommonUtils.FINISH_ACTIVITY_LOGIN) {
             mViewpager.setCurrentItem(3);
             mToolbar.setTitle(getString(R.string.im));
         }
@@ -164,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         mList.add(new WeatherFragment());
         mList.add(new IMListFragment());
         mList.add(new AboutFragment());
-        adapter = new MyAdapter(getSupportFragmentManager());
+        MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
         mViewpager.setAdapter(adapter);
         mViewpager.setOffscreenPageLimit(5);
         mViewpager.setPagingEnabled(false);
@@ -172,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
     class MyAdapter extends FragmentPagerAdapter {
 
-        public MyAdapter(FragmentManager fm) {
+        MyAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -198,12 +209,22 @@ public class MainActivity extends AppCompatActivity {
         if (exitTime == 0 || System.currentTimeMillis() - exitTime >= 2000) {
             Toast.makeText(MainActivity.this, getString(R.string.exit), Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
-            return;
         } else if (System.currentTimeMillis() - exitTime < 2000) {
             exitTime = 0;
             super.onBackPressed();
         }
 
+    }
+
+
+    public void showFAB(RecyclerView recyclerView) {
+        mRecyclerView = recyclerView;
+        mFab.setVisibility(View.VISIBLE);
+        mFab.attachToRecyclerView(recyclerView);
+    }
+
+    public void hideFAB() {
+        mFab.setVisibility(View.GONE);
     }
 
     @Override
